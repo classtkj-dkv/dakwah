@@ -112,7 +112,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 </style>
 <main class="wrap">
   <header>
-    <p class="eyebrow">Sejarah Islam · animasi 3D 2 menit 25 detik</p>
+    <p class="eyebrow">Sejarah Islam · animasi 3D 2 menit 36 detik</p>
     <h1>PERJALANAN HIJRAH NABI MUHAMMAD ﷺ DARI MAKKAH KE MADINAH</h1>
   </header>
   <section class="frame">
@@ -146,7 +146,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
       </div>
       <div class="ov startov" id="startov">
         <button class="bigplay" id="bigplay" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg><span id="bigtxt">Putar animasi</span></button>
-        <p class="startnote" id="startnote">Durasi 2 menit 25 detik. Aktifkan suara untuk mendengar narasi dan musik latar.</p>
+        <p class="startnote" id="startnote">Durasi 2 menit 36 detik. Aktifkan suara untuk mendengar narasi dan musik latar.</p>
       </div>
     </div>
     <div class="sub"><p id="subtext"></p></div>
@@ -154,7 +154,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
   <section class="bar" aria-label="Kontrol pemutar">
     <button class="btn primary" id="pp" type="button" aria-label="Putar"><svg id="ico-play" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg><svg id="ico-pause" viewBox="0 0 24 24" hidden><path d="M6 4.5h4.2v15H6zM13.8 4.5H18v15h-4.2z"/></svg></button>
     <button class="btn" id="rs" type="button" aria-label="Mulai ulang"><svg viewBox="0 0 24 24"><path d="M12 5V2L7 6.5 12 11V8a5 5 0 1 1-5 5H5a7 7 0 1 0 7-8z"/></svg></button>
-    <span class="time"><b id="tcur">0:00</b> / 2:25</span>
+    <span class="time"><b id="tcur">0:00</b> / 2:36</span>
     <div class="vol">
       <button class="btn" id="mute" type="button" aria-label="Bisukan"><svg id="ico-vol" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9zm11.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM13 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg><svg id="ico-mute" viewBox="0 0 24 24" hidden><path d="M4 9v6h4l5 4V5L8 9zm12.6 3 2.4-2.4-1.4-1.4-2.4 2.4-2.4-2.4-1.4 1.4 2.4 2.4-2.4 2.4 1.4 1.4 2.4-2.4 2.4 2.4 1.4-1.4z"/></svg></button>
       <input id="vol" type="range" min="0" max="1" step="0.01" value="0.8" aria-label="Volume">
@@ -167,7 +167,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
     <select id="psel"><option value="0.65">Sangat dalam</option><option value="0.8" selected>Dalam</option><option value="1">Normal</option><option value="1.2">Tinggi</option></select>
     <button class="try" id="vtest" type="button">Coba suara</button>
   </section>
-  <input id="seek" type="range" min="0" max="145" step="0.1" value="0" aria-label="Timeline 145 detik">
+  <input id="seek" type="range" min="0" max="156.4" step="0.1" value="0" aria-label="Timeline 156 detik">
   <nav class="scenes" id="scenes" aria-label="Adegan"></nav>
   <p class="note" id="note">Sesuai adab, wajah dan tubuh Nabi Muhammad ﷺ tidak digambarkan; beliau dilambangkan dengan bulatan cahaya kecil. Para sahabat (Abu Bakar, Amir bin Fuhairah, Abdullah bin Uraiqith) digambarkan sebagai figur sederhana tanpa wajah rinci. Cerita mengikuti riwayat sirah yang masyhur; narasi memakai rekaman suara dari ElevenLabs; jika berkas audio belum ada, dipakai suara bahasa Indonesia dari perangkat Anda.</p>
 </main>
@@ -324,11 +324,17 @@ const sets=[];
   {const fl=new THREE.Mesh(new THREE.PlaneGeometry(4.6,8).rotateX(-Math.PI/2),new THREE.MeshBasicMaterial({color:0x020206}));fl.position.set(0,.03,13.5);g.add(fl);}
   const r=rng(8);for(let i=0;i<16;i++){const s=r()<.5?-1:1;mk(new THREE.IcosahedronGeometry(.7+r()*1.6,0),mat(0x4a4046),s*(4.5+r()*14),.5,18+r()*9,g);}[-1,1].forEach(s=>mk(new THREE.IcosahedronGeometry(1.1,0),mat(0x4a4046),s*2.9,.7,18.1,g));
   const NU=nur(g,0,.95,36,.6),AB3=person(g,0,0,0xe8e0cc,{ph:.4,tb:0xf0ead8,sk:1}),P2=[],pth=u=>{const e=ease(prog(u,.4,4.5));return u<4.5?[lerp(13,0,e),lerp(36,19,e)]:[0,lerp(19,9,prog(u,4.5,6.5))];};for(let j=0;j<5;j++)P2.push(person(g,0,80,0x07060c,{torch:1,tb:0x0c0a12,sash:0x1a1420,ph:j*1.7,sk:j}));
+  /* suasana mencekam: kabut dingin, kelelawar keluar dari mulut gua, cahaya tenang dari dalam gua */
+  const MS=[];for(let i=0;i<16;i++){const m=glw(0x8fa0c8,16+r()*10,(r()-.5)*40,1.2+r()*1.5,10+r()*34,0,g);MS.push({m,x:m.position.x,z:m.position.z,p:r()*6,s:.3+r()*.4});}
+  const CG=glw(0xffd98a,6,0,2,10.5,0,g),BT=[];for(let i=0;i<10;i++){const b=new THREE.Group();g.add(b);BT.push({b,w:[-1,1].map(s=>{const q=mk(bx(.6,.03,.22),bas(0x05050a,1),s*.3,0,0,b);q.castShadow=false;return q;}),ph:r()*6,a:(i/10-.5)*2.4});}
+  const ex3=(lt,t,dk)=>{MS.forEach(o=>{o.m.position.x=o.x+Math.sin(t*o.s+o.p)*3;o.m.position.z=o.z+Math.cos(t*o.s*.8+o.p)*2;o.m.material.opacity=(.07+.04*Math.sin(t*.6+o.p))*(1-dk*.9);});
+    CG.material.opacity=(.35+.1*Math.sin(t*1.6))*prog(lt,6,8)*(1-dk*.85);
+    BT.forEach(o=>{const u=prog(lt,5.5+o.ph*.2,11.5);o.b.visible=u>0&&u<1;if(!o.b.visible)return;o.b.position.set(Math.sin(o.a)*u*12+Math.sin(t*4+o.ph)*1.1,2.6+u*8+Math.sin(t*3+o.ph)*.8,12+Math.cos(o.a)*u*12+u*8);o.b.rotation.y=o.a;const f=.8*Math.sin(t*22+o.ph);o.w[0].rotation.z=f;o.w[1].rotation.z=-f;});};
   sets.push({g,up(lt,t){const dk=prog(lt,12,20);{const e=ease(prog(lt,.4,4.5)),a=1-prog(lt,4,6.5);{const q=pth(lt),w=pth(lt+1.4);NU.position.set(q[0],.95,q[1]);AB3.position.set(w[0]-1.1,0,w[1]+.4);AB3.visible=lt<5.4;AB3.rotation.y=lerp(-2.5,-Math.PI,ease(prog(lt,2.5,4.5)));ap(AB3,t,'walk',6,1);}NU.visible=a>0;NU.scale.setScalar(Math.max(a,.001));if(a>0)lite(NU,2.6*a);}
-    env({bg:C(0x0a1030,0xc08a78,dk),hs:C(0x3a4a8a,0xd8a888,dk),hg:C(0x2a2a3a,0x6a4a3a,dk),hi:.55,lc:C(0x9fb6ff,0xffb480,dk),li:lerp(.8,1.1,dk),dir:V3(-40,50,50),bp:V3(-130,90,-300),f:V3(0,3,25),fd:lerp(.011,.008,dk),st:1-dk*.85,body:'m',ba:1-dk*.7});
+    env({bg:C(0x0a1030,0xc08a78,dk),hs:C(0x3a4a8a,0xd8a888,dk),hg:C(0x2a2a3a,0x6a4a3a,dk),hi:.55,lc:C(0x9fb6ff,0xffb480,dk),li:lerp(.8,1.1,dk),dir:V3(-40,50,50),bp:V3(-130,90,-300),f:V3(0,3,25),fd:lerp(.018,.008,dk),st:1-dk*.85,body:'m',ba:1-dk*.7});
     let lead=null;P2.forEach((p,j)=>{const sx=22+j*2.6,sz=62+(j%3)*3,ex=(j-2)*2.6,ez=37+(j%2)*2.2,fs=u=>trap(u-4-j*.35,11,2,2.5)-.42*trap(u-16.5-j*.15,3.5,1.2,.01),s=fs(lt),len=Math.hypot(ex-sx,ez-sz),sp=Math.abs(s-fs(lt-.05))/.05*len;p.position.set(sx+(ex-sx)*s,0,sz+(ez-sz)*s);p.rotation.y=Math.atan2(ex-sx,ez-sz)+Math.PI*ease(prog(lt,15.4+j*.15,16.4+j*.15));ap(p,t,sp>.05?'walk':'idle',7,clamp(sp/2.3,0,1));if(!lead)lead=p;});
-    if(lead){lead.userData.tg.getWorldPosition(V);torchL.position.copy(V);torchL.intensity=2.2;}
-    cm(...L3(L3([-34,6,70,0,6,14],[-12,4.2,56,0,2.8,18],ease(prog(lt,0,12))),[14,9,62,0,4,18],ease(prog(lt,12,20))),40);dst(t,0xc9bfa8,.25,.1,-2,.4,-1);}});}
+    if(lead){lead.userData.tg.getWorldPosition(V);torchL.position.copy(V);torchL.intensity=2.2*(.82+.18*Math.sin(t*23)*Math.sin(t*7.3));}
+    cm(...L3(L3([-34,6,70,0,6,14],[-12,4.2,56,0,2.8,18],ease(prog(lt,0,12))),[14,9,62,0,4,18],ease(prog(lt,12,20))),40-6*ease(prog(lt,3,12))+6*ease(prog(lt,12,18)));dst(t,0xc9bfa8,.4,.1,-2,.4,-1);ex3(lt,t,dk);}});}
 /* ===== Adegan 4: Padang pasir (60-85) ===== */
 {const g=new THREE.Group();sc.add(g);
   const dn=(x,z)=>{const c=clamp(Math.abs(z)/16,0,1);return(3.4*Math.sin(x*.045+Math.sin(z*.03)*2)+2.4*Math.sin(z*.07+x*.02)+1.3*Math.sin(x*.12+z*.1))*c*c;};
@@ -389,7 +395,7 @@ function drawFrame(t){GT=t;let i=0;for(let k=SC.length-1;k>=0;k--){if(t>=SC[k].s
   const f=Math.min(lt/1.2,(SC[i].e-SC[i].s-lt)/(i===SC.length-1?2.5:1.2));document.getElementById('fade').style.opacity=clamp(1-ease(clamp(f,0,1)),0,1);}
 
 /* ===== Linimasa, narasi, dan subtitle ===== */
-const DUR=145;
+const DUR0=145;
 const SC=[
   {s:0,e:20,n:'Makkah'},
   {s:20,e:40,n:'Berangkat'},
@@ -413,25 +419,35 @@ const SEG=[
   [105.5,111.5,'Di Madinah, Muhajirin dan Anshar dipersaudarakan, dan Masjid Nabawi dibangun.'],
   [128.5,135,'Hijrah mengajarkan kesabaran, pengorbanan, persaudaraan, dan tawakal kepada Allah.'],
   [111.8,120.2,'Mereka membangunnya bersama. Fondasinya dari batu, dindingnya dari bata lumpur, dan tiangnya dari batang pohon kurma.'],
-  [120.4,128.4,'Rasulullah ﷺ ikut mengangkat bata dan batu bersama para sahabat, lalu atapnya ditutup dengan pelepah kurma.']
+  [120.4,128.4,'Rasulullah ﷺ ikut mengangkat bata dan batu bersama para sahabat, lalu atapnya ditutup dengan pelepah kurma.'],
+  [139.3,144.5,'']
 ];
+/* Peta waktu: animasi diperlambat/diperpanjang pada segmen yang narasinya lebih panjang, audio TIDAK dipercepat.
+   t = waktu animasi (adegan, subtitle, peta), T = waktu putar sebenarnya. */
+const ADUR=[6.92,8.67,11.0,5.88,10.63,11.73,8.07,9.74,4.44,10.11,7.81,5.98,6.22,8.2,9.56,5.09];
+const WPT=[[0,0]];let WOFF=0;
+SEG.map((s,i)=>({a:s[0],b:s[1],e:Math.max(0,ADUR[i]+.6-(s[1]-s[0]))})).filter(o=>o.e>.01).sort((p,q)=>p.a-q.a).forEach(o=>{WPT.push([o.a+WOFF,o.a]);WOFF+=o.e;WPT.push([o.b+WOFF,o.b]);});
+WPT.push([DUR0+WOFF,DUR0]);
+const DUR=DUR0+WOFF;
+const wrp=T=>{for(let k=0;k<WPT.length-1;k++){const p=WPT[k],q=WPT[k+1];if(T<q[0]||k===WPT.length-2)return p[1]+(q[1]-p[1])*clamp((T-p[0])/Math.max(q[0]-p[0],1e-6),0,1);}return DUR0;};
+const unw=a=>{for(let k=0;k<WPT.length-1;k++){const p=WPT[k],q=WPT[k+1];if(a<q[1]||k===WPT.length-2)return p[0]+(q[0]-p[0])*clamp((a-p[1])/Math.max(q[1]-p[1],1e-6),0,1);}return DUR;};
 const mapPos=t=>t<20?0:t<40?lerp(0,.14,ease(prog(t,20,40))):t<60?.14:t<85?lerp(.14,.9,prog(t,60,85)):lerp(.9,1,ease(prog(t,85,105)));
 
 /* ===== Elemen halaman ===== */
 const $=id=>document.getElementById(id);
 const stage=$('stage'),seek=$('seek'),volEl=$('vol');
-let t=0,playing=false,last=0,curSeg=-1,needSpeak=false,muted=false,vol=.8,ended=false;
+let t=0,T=0,playing=false,last=0,curSeg=-1,needSpeak=false,muted=false,vol=.8,ended=false;
 const fmt=s=>{s=Math.floor(s);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');};
 const setP=(el,v,max)=>el.style.setProperty('--p',(v/max*100)+'%');
 
 /* chip adegan */
 const chips=[];
-SC.forEach((s,i)=>{const b=document.createElement('button');b.type='button';b.className='chip';b.style.flex=(s.e-s.s)+' 1 0';b.innerHTML='<i><u></u></i><span>'+(i+1)+'. '+s.n+'</span>';b.addEventListener('click',()=>seekTo(s.s+.01));$('scenes').appendChild(b);chips.push(b);});
+SC.forEach((s,i)=>{const b=document.createElement('button');b.type='button';b.className='chip';b.style.flex=(unw(s.e)-unw(s.s))+' 1 0';b.innerHTML='<i><u></u></i><span>'+(i+1)+'. '+s.n+'</span>';b.addEventListener('click',()=>seekTo(unw(s.s)+.01));$('scenes').appendChild(b);chips.push(b);});
 
 /* ===== Narasi (suara bawaan perangkat) ===== */
 const NAR=SEG.map((sg,i)=>{const a=new Audio('narasi/seg-'+String(i).padStart(2,'0')+'.mp3');a.preload='auto';a.ok=false;
   a.addEventListener('canplaythrough',()=>{a.ok=true;});a.addEventListener('error',()=>{a.ok=false;});
-  a.addEventListener('loadedmetadata',()=>{const av=(sg[1]-sg[0])-.3;a.rate=a.duration>av?Math.min(a.duration/av,1.25):1;});return a;});
+  a.addEventListener('loadedmetadata',()=>{a.rate=1;});return a;});
 let curAudio=null;
 const stopNar=()=>{if(curAudio){curAudio.pause();try{curAudio.currentTime=0;}catch(e){}curAudio=null;}};
 const synth=window.speechSynthesis||null;let voice=null,voiceReady=false;
@@ -474,7 +490,7 @@ function pluck(f,at,dur,gain){
   o.connect(lp);o2.connect(lp);lp.connect(g);g.connect(musicBus);g.connect(musicBus._conv);o.start(at);o2.start(at);o.stop(at+dur+.1);o2.stop(at+dur+.1);
 }
 function scheduler(){
-  if(!ac||!playing||t>DUR-3)return;
+  if(!ac||!playing||T>DUR-3)return;
   const sc=sceneIndex(t);const bright=sc>=4;const tense=sc===0||sc===2;
   droneGain.gain.setTargetAtTime(tense?.62:bright?.42:.5,ac.currentTime,2);
   while(nextT<ac.currentTime+1.2){
@@ -484,6 +500,7 @@ function scheduler(){
     const oct=(sc===3&&r<.25)?.5:1;
     pluck(scale[idx]*oct,nextT,3.2,bright?.22:.18);
     if(noteIdx%4===2)pluck(scale[(idx+2)%scale.length]*.5,nextT+.18,3.6,.1);
+    if(sc===2)pluck(1568+Math.random()*700,nextT+.9+Math.random(),.45,.045);
     nextT+=step;noteIdx++;
   }
 }
@@ -499,14 +516,14 @@ $('vtest').addEventListener('click',()=>{if(!synth)return;synth.cancel();const u
 /* ===== Kontrol ===== */
 function setPlayUI(){$('ico-play').hidden=playing;$('ico-pause').hidden=!playing;$('pp').setAttribute('aria-label',playing?'Jeda':'Putar');}
 function play(){
-  if(ended||t>=DUR-.05){t=0;ended=false;curSeg=-1;}
+  if(ended||T>=DUR-.05){T=0;t=0;ended=false;curSeg=-1;}
   initAudio();if(ac&&ac.state==='suspended')ac.resume();
   playing=true;last=performance.now();setPlayUI();$('startov').hidden=true;
   if(curAudio&&curAudio.paused&&!curAudio.ended&&curAudio.currentTime>0)curAudio.play().catch(()=>{});else if(synth&&synth.paused&&synth.speaking)synth.resume();else needSpeak=true;
 }
 function pause(){playing=false;setPlayUI();if(curAudio)curAudio.pause();if(synth&&synth.speaking)synth.pause();if(ac&&ac.state==='running')ac.suspend();}
-function seekTo(x){t=clamp(x,0,DUR-.01);ended=false;curSeg=-1;needSpeak=true;stopNar();if(synth)synth.cancel();if(!playing){drawFrame(t);ui();}}
-function restart(){t=0;ended=false;curSeg=-1;stopNar();if(synth)synth.cancel();playing=false;play();}
+function seekTo(x){T=clamp(x,0,DUR-.01);t=wrp(T);ended=false;curSeg=-1;needSpeak=true;stopNar();if(synth)synth.cancel();if(!playing){drawFrame(t);ui();}}
+function restart(){T=0;t=0;ended=false;curSeg=-1;stopNar();if(synth)synth.cancel();playing=false;play();}
 $('pp').addEventListener('click',()=>playing?pause():play());
 $('bigplay').addEventListener('click',play);
 $('rs').addEventListener('click',restart);
@@ -515,8 +532,8 @@ volEl.addEventListener('input',()=>{vol=+volEl.value;muted=vol===0;applyVolume()
 seek.addEventListener('input',()=>{seekTo(+seek.value);});
 document.addEventListener('keydown',e=>{const tg=e.target||{};const tag=tg.tagName||'';
   if(e.code==='Space'&&tag!=='BUTTON'&&tag!=='INPUT'){e.preventDefault();playing?pause():play();}
-  else if(e.code==='ArrowRight'&&tag!=='INPUT'){seekTo(t+5);}
-  else if(e.code==='ArrowLeft'&&tag!=='INPUT'){seekTo(t-5);}});
+  else if(e.code==='ArrowRight'&&tag!=='INPUT'){seekTo(T+5);}
+  else if(e.code==='ArrowLeft'&&tag!=='INPUT'){seekTo(T-5);}});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&playing)pause();});
 
 /* ===== Pembaruan antarmuka ===== */
@@ -529,16 +546,16 @@ function ui(){
   els.vals.forEach((v,i)=>v.classList.toggle('on',t>=VT[i]&&t<VOUT));
   $('closing').classList.toggle('on',t>=CL_IN&&t<CL_OUT);
   const mp=mapPos(t);els.dot.style.left=(mp*100)+'%';els.fill.style.width=(mp*100)+'%';
-  $('tcur').textContent=fmt(t);seek.value=t;setP(seek,t,DUR);
+  $('tcur').textContent=fmt(T);seek.value=T;setP(seek,T,DUR);
   const si=sceneIndex(t);chips.forEach((c,i)=>{c.classList.toggle('cur',i===si);c.querySelector('u').style.width=(i<si?100:i>si?0:(t-SC[i].s)/(SC[i].e-SC[i].s)*100)+'%';});
 }
 function loop(now){
-  if(playing){t+=(now-last)/1000;last=now;if(t>=DUR){t=DUR;playing=false;ended=true;setPlayUI();stopNar();if(synth)synth.cancel();$('bigtxt').textContent='Putar ulang';$('startov').hidden=false;$('startnote').textContent='Animasi selesai. Semoga menjadi pelajaran.';}}
-  let idx=-1;for(let i=0;i<SEG.length;i++){if(t>=SEG[i][0]&&t<SEG[i][1]){idx=i;break;}}
+  if(playing){T+=(now-last)/1000;last=now;if(T>=DUR){T=DUR;playing=false;ended=true;setPlayUI();stopNar();if(synth)synth.cancel();$('bigtxt').textContent='Putar ulang';$('startov').hidden=false;$('startnote').textContent='Animasi selesai. Semoga menjadi pelajaran.';}}
+  t=wrp(T);let idx=-1;for(let i=0;i<SEG.length;i++){if(t>=SEG[i][0]&&t<SEG[i][1]){idx=i;break;}}
   if(idx!==curSeg){curSeg=idx;els.sub.textContent=idx>=0?SEG[idx][2]:'';if(playing){if(idx>=0&&t-SEG[idx][0]<2.5)speak(idx);else if(idx>=0){stopNar();if(synth)synth.cancel();}}}
   else if(needSpeak&&playing){needSpeak=false;if(idx>=0&&t-SEG[idx][0]<2.5)speak(idx);}
   if(needSpeak&&idx<0)needSpeak=false;
-  if(ac&&musicBus)musicBus.gain.setTargetAtTime(.3*(1-prog(t,DUR-5,DUR)),ac.currentTime,.15);
+  if(ac&&musicBus)musicBus.gain.setTargetAtTime(.3*(1-prog(T,DUR-5,DUR)),ac.currentTime,.15);
   drawFrame(t);ui();
   requestAnimationFrame(loop);
 }
@@ -546,6 +563,7 @@ function loop(now){
 /* ===== Ukuran kanvas ===== */
 function resize(){const cw=stage.clientWidth;R.setPixelRatio(Math.min(window.devicePixelRatio||1,2));R.setSize(cw,Math.round(cw*9/16),false);cam.aspect=16/9;cam.updateProjectionMatrix();}
 window.addEventListener('resize',()=>{resize();});
+seek.max=DUR;{const tt=document.querySelector('.time');if(tt&&tt.lastChild)tt.lastChild.textContent=' / '+fmt(DUR);seek.setAttribute('aria-label','Timeline '+Math.round(DUR)+' detik');}
 resize();applyVolume();setPlayUI();
 if(document.fonts&&document.fonts.ready){document.fonts.ready.then(()=>{drawFrame(t);});}
 requestAnimationFrame(now=>{last=now;loop(now);});
