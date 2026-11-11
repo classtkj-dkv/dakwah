@@ -419,11 +419,12 @@ const SEG=[
   [105.5,111.5,'Di Madinah, Muhajirin dan Anshar dipersaudarakan, dan Masjid Nabawi dibangun.'],
   [128.5,135,'Hijrah mengajarkan kesabaran, pengorbanan, persaudaraan, dan tawakal kepada Allah.'],
   [111.8,120.2,'Mereka membangunnya bersama. Fondasinya dari batu, dindingnya dari bata lumpur, dan tiangnya dari batang pohon kurma.'],
-  [120.4,128.4,'Rasulullah ﷺ ikut mengangkat bata dan batu bersama para sahabat, lalu atapnya ditutup dengan pelepah kurma.']
+  [120.4,128.4,'Rasulullah ﷺ ikut mengangkat bata dan batu bersama para sahabat, lalu atapnya ditutup dengan pelepah kurma.'],
+  [139.3,144.5,'']
 ];
 /* Peta waktu: animasi diperlambat/diperpanjang pada segmen yang narasinya lebih panjang, audio TIDAK dipercepat.
    t = waktu animasi (adegan, subtitle, peta), T = waktu putar sebenarnya. */
-const ADUR=[6.93,8.68,11.0,5.88,11.73,8.44,8.08,9.75,4.45,10.11,7.82,5.99,6.22,8.21,5.1];
+const ADUR=[6.92,8.67,11.0,5.88,10.63,11.73,8.07,9.74,4.44,10.11,7.81,5.98,6.22,8.2,9.56,5.09];
 const WPT=[[0,0]];let WOFF=0;
 SEG.map((s,i)=>({a:s[0],b:s[1],e:Math.max(0,ADUR[i]+.6-(s[1]-s[0]))})).filter(o=>o.e>.01).sort((p,q)=>p.a-q.a).forEach(o=>{WPT.push([o.a+WOFF,o.a]);WOFF+=o.e;WPT.push([o.b+WOFF,o.b]);});
 WPT.push([DUR0+WOFF,DUR0]);
