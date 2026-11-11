@@ -36,6 +36,10 @@ h1{margin:0;font-family:var(--f-display);font-weight:700;font-size:clamp(19px,3.
 .titlecard.on{opacity:1}
 .bism{font-family:var(--f-display);font-size:clamp(14px,3.2cqw,34px);color:var(--gold)}
 .tt{font-family:var(--f-display);font-weight:700;font-size:clamp(16px,3.6cqw,42px);line-height:1.22;letter-spacing:.03em;text-shadow:0 2px 24px rgba(0,0,0,.8);text-wrap:balance}
+.closing{opacity:0;transition:opacity 1.2s ease;gap:1.4cqw;padding-bottom:4cqw}
+.closing.on{opacity:1}
+.closing .cl-ar{font-family:var(--f-display);font-size:clamp(16px,3.2cqw,38px);color:#f3d58f;text-shadow:0 0 28px rgba(227,171,67,.45)}
+.closing .cl-id{font-size:clamp(10px,1.8cqw,21px);color:var(--ink);max-width:70%;text-wrap:balance;line-height:1.4}
 .verse{opacity:0;transition:opacity 1.2s ease;gap:.8cqw;padding-bottom:9.5cqw;justify-content:flex-end;padding-top:0}
 .verse.on{opacity:1}
 .verse .ar{font-family:var(--f-display);font-size:clamp(16px,3.4cqw,40px);color:#f3d58f;text-shadow:0 0 28px rgba(227,171,67,.55),0 2px 12px rgba(0,0,0,.8);line-height:1.5}
@@ -104,11 +108,11 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 .voice .try{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;padding:8px 14px;font:600 13px var(--f-ui);cursor:pointer}
 .voice .try:hover{border-color:var(--gold)}
 .voice select:focus-visible,.voice .try:focus-visible{outline:2px solid #f3d58f;outline-offset:2px}
-@media (prefers-reduced-motion:reduce){.titlecard,.verse,.val,.map{transition:none}}
+@media (prefers-reduced-motion:reduce){.titlecard,.verse,.val,.map,.closing{transition:none}}
 </style>
 <main class="wrap">
   <header>
-    <p class="eyebrow">Sejarah Islam · animasi 3D 2 menit 15 detik</p>
+    <p class="eyebrow">Sejarah Islam · animasi 3D 2 menit 25 detik</p>
     <h1>PERJALANAN HIJRAH NABI MUHAMMAD ﷺ DARI MAKKAH KE MADINAH</h1>
   </header>
   <section class="frame">
@@ -136,9 +140,13 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
         <div class="val"><b>Persaudaraan</b><span>Muhajirin dan Anshar dipersaudarakan di Madinah.</span></div>
         <div class="val"><b>Tawakal</b><span>Berikhtiar sungguh-sungguh, lalu berserah kepada Allah.</span></div>
       </div>
+      <div class="ov closing" id="closing">
+        <div class="cl-ar" lang="ar" dir="rtl">وَاللَّهُ أَعْلَمُ</div>
+        <div class="cl-id">Semoga kisah hijrah ini menjadi pelajaran bagi kita semua.</div>
+      </div>
       <div class="ov startov" id="startov">
         <button class="bigplay" id="bigplay" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg><span id="bigtxt">Putar animasi</span></button>
-        <p class="startnote" id="startnote">Durasi 2 menit 15 detik. Aktifkan suara untuk mendengar narasi dan musik latar.</p>
+        <p class="startnote" id="startnote">Durasi 2 menit 25 detik. Aktifkan suara untuk mendengar narasi dan musik latar.</p>
       </div>
     </div>
     <div class="sub"><p id="subtext"></p></div>
@@ -146,7 +154,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
   <section class="bar" aria-label="Kontrol pemutar">
     <button class="btn primary" id="pp" type="button" aria-label="Putar"><svg id="ico-play" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg><svg id="ico-pause" viewBox="0 0 24 24" hidden><path d="M6 4.5h4.2v15H6zM13.8 4.5H18v15h-4.2z"/></svg></button>
     <button class="btn" id="rs" type="button" aria-label="Mulai ulang"><svg viewBox="0 0 24 24"><path d="M12 5V2L7 6.5 12 11V8a5 5 0 1 1-5 5H5a7 7 0 1 0 7-8z"/></svg></button>
-    <span class="time"><b id="tcur">0:00</b> / 2:15</span>
+    <span class="time"><b id="tcur">0:00</b> / 2:25</span>
     <div class="vol">
       <button class="btn" id="mute" type="button" aria-label="Bisukan"><svg id="ico-vol" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9zm11.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM13 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg><svg id="ico-mute" viewBox="0 0 24 24" hidden><path d="M4 9v6h4l5 4V5L8 9zm12.6 3 2.4-2.4-1.4-1.4-2.4 2.4-2.4-2.4-1.4 1.4 2.4 2.4-2.4 2.4 1.4 1.4 2.4-2.4 2.4 2.4 1.4-1.4z"/></svg></button>
       <input id="vol" type="range" min="0" max="1" step="0.01" value="0.8" aria-label="Volume">
@@ -159,7 +167,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
     <select id="psel"><option value="0.65">Sangat dalam</option><option value="0.8" selected>Dalam</option><option value="1">Normal</option><option value="1.2">Tinggi</option></select>
     <button class="try" id="vtest" type="button">Coba suara</button>
   </section>
-  <input id="seek" type="range" min="0" max="135" step="0.1" value="0" aria-label="Timeline 135 detik">
+  <input id="seek" type="range" min="0" max="145" step="0.1" value="0" aria-label="Timeline 145 detik">
   <nav class="scenes" id="scenes" aria-label="Adegan"></nav>
   <p class="note" id="note">Sesuai adab, wajah dan tubuh Nabi Muhammad ﷺ tidak digambarkan; beliau dilambangkan dengan bulatan cahaya kecil. Para sahabat (Abu Bakar, Amir bin Fuhairah, Abdullah bin Uraiqith) digambarkan sebagai figur sederhana tanpa wajah rinci. Cerita mengikuti riwayat sirah yang masyhur; narasi memakai rekaman suara dari ElevenLabs; jika berkas audio belum ada, dipakai suara bahasa Indonesia dari perangkat Anda.</p>
 </main>
@@ -343,7 +351,7 @@ const sets=[];
     env({bg:C(0xb8d4e4),hs:C(0xd0e4f4),hg:C(0xb89a70),hi:.8,lc:C(0xfff0d0),li:1.25,dir:V3(-60,90,40),bp:V3(350,120,-60),f:V3(X+10,0,0),fd:.0045,body:'s',ba:1});
     C4.forEach(p=>ap(p,t,X+22>p.position.x?'wave':'idle'));
     const e=ease(prog(lt,9,13.5)),h=prog(lt,16,20)*4,c=L3([X-11,3.4,11,X+7,2.4,0],[X+13,2.5,8,X,2.6,0],e);cm(c[0],c[1]+h,c[2]+h*1.5,c[3],c[4],c[5],40);dst(t,0xd8e0a0,.45,.09,1.2,-.5,.5);}});}
-/* ===== Adegan 6: Penutup (105-135) - membangun masjid ===== */
+/* ===== Adegan 6: Penutup (105-145) - membangun masjid ===== */
 {const g=new THREE.Group();sc.add(g);gnd(g,0xd5b886);hills(g,0x9a7a62,18,170,80);
   const CRS=10,CH=.6,STN=0x8a7a68,MUD=[0xb98f5e,0xa98353,0xc29a68],crs=[];
   [[30,.9,0,-11],[30,.9,0,11],[.9,22,-15,0],[.9,22,15,0]].forEach((q,wi)=>{for(let i=0;i<CRS;i++){const m=mk(bx(q[0],CH,q[1]),mat(i<2?STN:MUD[(i+wi)%3]),q[2],CH/2,q[3],g);m.visible=false;crs.push({m,i,wi});}});
@@ -362,7 +370,7 @@ const sets=[];
     if(u<.94){const c=f(T,P,(u-.52)/.42);return[c[0],c[1],h(T,P),0,'walk',1];}
     return[P[0],P[1],h(T,P),u>.97?1:0,'idle',1];};
   const fin=(w,lt)=>{if(lt<24)return wpos(w,lt);const b=wpos(w,24);return[b[0],b[1],Math.atan2(-b[0],-b[1]),0,lt>26?'wave':'idle',1];};
-  sets.push({g,up(lt,t){const k=prog(lt,4,30),e=ease(lt/30),sb=k<.6;
+  sets.push({g,up(lt,t){const k=prog(lt,4,30),e=ease(prog(lt,0,30)),z=prog(lt,30,40),sb=k<.6;
     env({bg:C(0xf4c090,0x242c60,k),hs:C(0xf8d8a8,0x4a5a9a,k),hg:C(0xa08060,0x2a2a40,k),hi:.7,lc:C(0xffc890,0x9fb0ff,k),li:lerp(1.2,.7,k),dir:V3(-80,40+30*(1-k),-60),bp:V3(120,70,-300),f:V3(0,2,0),fd:lerp(.004,.008,k),st:prog(k,.5,1)*.9,body:sb?'s':'m',ba:sb?1-prog(k,.45,.6):prog(k,.6,.85)});
     crs.forEach(({m,i,wi})=>{const s=3+i*1.7+wi*.2,a=ease(prog(lt,s,s+.7));m.visible=a>0;m.scale.y=Math.max(a,.01);m.position.y=CH*(i+a/2);});
     cols.forEach(({cg,k})=>{const u=ease(prog(lt,11+k,13.4+k));cg.visible=lt>8.5;cg.rotation.x=-(1-u)*Math.PI/2;});
@@ -371,24 +379,24 @@ const sets=[];
     lm.forEach(s=>s.material.opacity=.8*prog(k,.4,.8));
     WK.forEach(w=>{const q=fin(w,lt),u=w.p.userData;w.p.position.set(q[0],0,q[1]);w.p.rotation.y=q[2];ap(w.p,t,q[4],7,q[5]);w.bk.visible=!!q[3];if(q[3])u.a[0].rotation.x=u.a[1].rotation.x=-1;});
     {const q=fin(WO,lt);NU6.position.set(q[0],.95+Math.abs(Math.sin(t*3))*.05,q[1]);lite(NU6,2.4);}
-    const th=lerp(.5,-.7,e),rr=lerp(34,58,e);cm(Math.sin(th)*rr,lerp(10,20,e),Math.cos(th)*rr,0,3.2,0,42);dst(t,0xffe5a8,.5,.14,.6,.8,.2);}});}
+    const th=lerp(.5,-.7,e)-z*.06,rr=lerp(34,58,e)+z*7;cm(Math.sin(th)*rr,lerp(10,20,e)+z*2,Math.cos(th)*rr,0,3.2,0,42);dst(t,0xffe5a8,.5,.14,.6,.8,.2);}});}
 
 function drawFrame(t){GT=t;let i=0;for(let k=SC.length-1;k>=0;k--){if(t>=SC[k].s){i=k;break;}}
   sets.forEach((s,k)=>s.g.visible=k===i);torchL.intensity=0;nurL.intensity=0;torchL.color.set(0xff9040);NR.forEach(o=>{o.h.material.opacity=.5+.12*Math.sin(t*2.2+o.p);});
   FL.forEach(f=>f.s.scale.setScalar(f.b*(1+.1*Math.sin(t*17+f.p))));PS.forEach(o=>o.t.rotation.x=Math.sin(t*1.1+o.ph)*.035);
   WM.color.setRGB(1,.68,.36).multiplyScalar(.85+.15*Math.sin(t*3));
   const lt=t-SC[i].s;sets[i].up(lt,t);skyG.position.copy(cam.position);R.render(sc,cam);
-  const f=Math.min(lt,SC[i].e-SC[i].s-lt)/1.2;document.getElementById('fade').style.opacity=clamp(1-ease(clamp(f,0,1)),0,1);}
+  const f=Math.min(lt/1.2,(SC[i].e-SC[i].s-lt)/(i===SC.length-1?2.5:1.2));document.getElementById('fade').style.opacity=clamp(1-ease(clamp(f,0,1)),0,1);}
 
 /* ===== Linimasa, narasi, dan subtitle ===== */
-const DUR=135;
+const DUR=145;
 const SC=[
   {s:0,e:20,n:'Makkah'},
   {s:20,e:40,n:'Berangkat'},
   {s:40,e:60,n:'Gua Tsur'},
   {s:60,e:85,n:'Padang pasir'},
   {s:85,e:105,n:'Madinah'},
-  {s:105,e:135,n:'Masjid dan penutup'}
+  {s:105,e:145,n:'Masjid dan penutup'}
 ];
 const SEG=[
   [1,9,'Makkah, tiga belas tahun setelah wahyu pertama turun. Kaum Muslim terus ditekan oleh kaum Quraisy.'],
@@ -466,7 +474,7 @@ function pluck(f,at,dur,gain){
   o.connect(lp);o2.connect(lp);lp.connect(g);g.connect(musicBus);g.connect(musicBus._conv);o.start(at);o2.start(at);o.stop(at+dur+.1);o2.stop(at+dur+.1);
 }
 function scheduler(){
-  if(!ac||!playing)return;
+  if(!ac||!playing||t>DUR-3)return;
   const sc=sceneIndex(t);const bright=sc>=4;const tense=sc===0||sc===2;
   droneGain.gain.setTargetAtTime(tense?.62:bright?.42:.5,ac.currentTime,2);
   while(nextT<ac.currentTime+1.2){
@@ -513,12 +521,13 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden&&playing)pa
 
 /* ===== Pembaruan antarmuka ===== */
 const els={title:$('titlecard'),verse:$('verse'),map:$('map'),vals:[...document.querySelectorAll('.val')],sub:$('subtext'),dot:$('mapdot'),fill:$('mapfill')};
-const VT=[129,130.5,132,133.4];
+const VT=[130.3,131.4,132.5,133.8],VOUT=138.5,CL_IN=139.3,CL_OUT=143.5;
 function ui(){
   els.title.classList.toggle('on',t<6.5);
   els.verse.classList.toggle('on',t>=52&&t<59.2);
   els.map.classList.toggle('on',t>=21&&t<104);
-  els.vals.forEach((v,i)=>v.classList.toggle('on',t>=VT[i]));
+  els.vals.forEach((v,i)=>v.classList.toggle('on',t>=VT[i]&&t<VOUT));
+  $('closing').classList.toggle('on',t>=CL_IN&&t<CL_OUT);
   const mp=mapPos(t);els.dot.style.left=(mp*100)+'%';els.fill.style.width=(mp*100)+'%';
   $('tcur').textContent=fmt(t);seek.value=t;setP(seek,t,DUR);
   const si=sceneIndex(t);chips.forEach((c,i)=>{c.classList.toggle('cur',i===si);c.querySelector('u').style.width=(i<si?100:i>si?0:(t-SC[i].s)/(SC[i].e-SC[i].s)*100)+'%';});
@@ -529,6 +538,7 @@ function loop(now){
   if(idx!==curSeg){curSeg=idx;els.sub.textContent=idx>=0?SEG[idx][2]:'';if(playing){if(idx>=0&&t-SEG[idx][0]<2.5)speak(idx);else if(idx>=0){stopNar();if(synth)synth.cancel();}}}
   else if(needSpeak&&playing){needSpeak=false;if(idx>=0&&t-SEG[idx][0]<2.5)speak(idx);}
   if(needSpeak&&idx<0)needSpeak=false;
+  if(ac&&musicBus)musicBus.gain.setTargetAtTime(.3*(1-prog(t,DUR-5,DUR)),ac.currentTime,.15);
   drawFrame(t);ui();
   requestAnimationFrame(loop);
 }
