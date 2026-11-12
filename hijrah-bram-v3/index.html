@@ -45,6 +45,9 @@ h1{margin:0;font-family:var(--f-display);font-weight:700;font-size:clamp(19px,3.
 .verse .ar{font-family:var(--f-display);font-size:clamp(16px,3.4cqw,40px);color:#f3d58f;text-shadow:0 0 28px rgba(227,171,67,.55),0 2px 12px rgba(0,0,0,.8);line-height:1.5}
 .verse .id{font-size:clamp(9px,1.35cqw,16px);color:var(--ink);text-shadow:0 1px 8px rgba(0,0,0,.9);max-width:80%}
 .verse .ref{font-size:clamp(9px,1.3cqw,14px);color:var(--gold);letter-spacing:.1em;text-transform:uppercase}
+.dalil{background:linear-gradient(0deg,rgba(6,10,24,.6),rgba(6,10,24,0) 58%)}
+.dalil .ar{font-size:clamp(14px,2.7cqw,32px);max-width:88%}
+.dalil .id{max-width:78%;line-height:1.4}
 .values{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4cqw;width:88%;margin:0 auto;padding-bottom:9cqw;align-content:end}
 .values.hold{opacity:1}
 .val{opacity:0;transform:translateY(8px);transition:opacity 1s ease,transform 1s ease;border-top:2px solid var(--gold);padding-top:.9cqw;background:linear-gradient(180deg,rgba(6,10,24,.55),rgba(6,10,24,0));padding-inline:.8cqw .6cqw;text-align:left}
@@ -543,11 +546,20 @@ document.addEventListener('keydown',e=>{const tg=e.target||{};const tag=tg.tagNa
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&playing)pause();});
 
 /* ===== Pembaruan antarmuka ===== */
+const DL=[
+ [12.2,19.6,'وَإِذْ يَمْكُرُ بِكَ الَّذِينَ كَفَرُوا لِيُثْبِتُوكَ أَوْ يَقْتُلُوكَ أَوْ يُخْرِجُوكَ ۚ وَيَمْكُرُونَ وَيَمْكُرُ اللَّهُ ۖ وَاللَّهُ خَيْرُ الْمَاكِرِينَ','“Dan (ingatlah) ketika orang-orang kafir (Quraisy) membuat tipu daya terhadapmu untuk menahanmu, membunuhmu, atau mengusirmu. Mereka membuat tipu daya, dan Allah menggagalkan tipu daya itu. Allah sebaik-baik pembalas tipu daya.”','QS Al-Anfal: 30'],
+ [43,50.8,'مَا ظَنُّكَ يَا أَبَا بَكْرٍ بِاثْنَيْنِ اللَّهُ ثَالِثُهُمَا','“Bagaimana dugaanmu, wahai Abu Bakar, terhadap dua orang yang Allah adalah yang ketiganya?”','HR. Bukhari no. 3653 dan Muslim no. 2381'],
+ [86.5,94,'لَمَسْجِدٌ أُسِّسَ عَلَى التَّقْوَىٰ مِنْ أَوَّلِ يَوْمٍ أَحَقُّ أَنْ تَقُومَ فِيهِ','“Sungguh, masjid yang didirikan atas dasar takwa sejak hari pertama lebih pantas engkau melaksanakan salat di dalamnya.”','QS At-Taubah: 108'],
+ [105.8,111.3,'يُحِبُّونَ مَنْ هَاجَرَ إِلَيْهِمْ ... وَيُؤْثِرُونَ عَلَىٰ أَنفُسِهِمْ وَلَوْ كَانَ بِهِمْ خَصَاصَةٌ','“...mereka mencintai orang yang berhijrah ke tempat mereka... dan mereka mengutamakan (Muhajirin) atas diri mereka sendiri, meskipun mereka juga memerlukan.”','QS Al-Hasyr: 9 (potongan ayat)'],
+ [121,128,'فَمَنْ كَانَتْ هِجْرَتُهُ إِلَى اللَّهِ وَرَسُولِهِ فَهِجْرَتُهُ إِلَى اللَّهِ وَرَسُولِهِ','“Barang siapa hijrahnya karena Allah dan Rasul-Nya, maka hijrahnya adalah kepada Allah dan Rasul-Nya.”','HR. Bukhari no. 1 dan Muslim']
+];
+const DLE=DL.map(q=>{const d=document.createElement('div');d.className='ov verse dalil';const f=(c,t,l)=>{const e=document.createElement('div');e.className=c;e.textContent=t;if(l){e.lang='ar';e.dir='rtl';}d.appendChild(e);};f('ar',q[2],1);f('id',q[3]);f('ref',q[4]);$('values').parentNode.insertBefore(d,$('values'));return d;});
 const els={title:$('titlecard'),verse:$('verse'),map:$('map'),vals:[...document.querySelectorAll('.val')],sub:$('subtext'),dot:$('mapdot'),fill:$('mapfill')};
 const VT=[130.3,131.4,132.5,133.8],VOUT=138.5,CL_IN=139.3,CL_OUT=143.5;
 function ui(){
   els.title.classList.toggle('on',t<6.5);
   els.verse.classList.toggle('on',t>=52&&t<59.2);
+  DLE.forEach((d,i)=>d.classList.toggle('on',t>=DL[i][0]&&t<DL[i][1]));
   els.map.classList.toggle('on',t>=21&&t<104);
   els.vals.forEach((v,i)=>v.classList.toggle('on',t>=VT[i]&&t<VOUT));
   $('closing').classList.toggle('on',t>=CL_IN&&t<CL_OUT);
