@@ -1,4 +1,15 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.sub p{font-size:calc(clamp(11px,1.5vw,18px)*var(--ss,1));max-width:min(calc(var(--sw,75)*1%),1100px);color:var(--sc,#f1e8d2);font-family:var(--sf,inherit);font-weight:var(--sbw,400);text-shadow:var(--sh,none);background:var(--sbg,transparent);padding:.15em .6em;border-radius:6px;width:fit-content}
+.sub.hid{visibility:hidden}
+.sub{bottom:var(--so,0%)}
+.sub[data-p="t"]{top:var(--so,0%);bottom:auto}
+.sub[data-p="m"]{top:50%;bottom:auto;transform:translateY(-50%);height:auto}
+.subset input[type=range]{width:96px;accent-color:#e3ab43}
+.subset input[type=color]{width:34px;height:30px;padding:0;border:1px solid var(--line);background:none;border-radius:6px}
+.subset label.ck{display:inline-flex;gap:5px;align-items:center}
+.subset,.recset{border-top:1px solid var(--line);padding-top:10px}
+.recset .try.rec{border-color:var(--gold)}
+@media (max-width:720px){.sub[data-p]{top:auto;bottom:auto;transform:none}.sub p{width:100%;max-width:100%}}
+</style></head><body>
 <title>Perjalanan Hijrah</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -169,6 +180,24 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
     <label for="psel">Nada</label>
     <select id="psel"><option value="0.65">Sangat dalam</option><option value="0.8" selected>Dalam</option><option value="1">Normal</option><option value="1.2">Tinggi</option></select>
     <button class="try" id="vtest" type="button">Coba suara</button>
+  </section>
+  <section class="voice subset" aria-label="Pengaturan subtitle">
+    <label class="ck"><input type="checkbox" id="s-on" checked> Subtitle</label>
+    <label for="s-size">Ukuran</label><input id="s-size" type="range" min="70" max="240" step="5" value="100">
+    <label for="s-pos">Posisi</label><select id="s-pos"><option value="b">Bawah</option><option value="m">Tengah</option><option value="t">Atas</option></select>
+    <label for="s-off">Jarak tepi</label><input id="s-off" type="range" min="0" max="30" value="0">
+    <label for="s-w">Lebar</label><input id="s-w" type="range" min="40" max="100" value="75">
+    <label for="s-fc">Teks</label><input id="s-fc" type="color" value="#f1e8d2">
+    <label for="s-bc">Latar</label><input id="s-bc" type="color" value="#000000"><input id="s-bo" type="range" min="0" max="100" value="0" aria-label="Opasitas latar">
+    <label for="s-font">Font</label><select id="s-font"><option value="ui">Sans</option><option value="display">Judul</option><option value="serif">Serif</option></select>
+    <label class="ck"><input type="checkbox" id="s-bold"> Tebal</label>
+    <label class="ck"><input type="checkbox" id="s-shadow" checked> Bayangan</label>
+    <button class="try" id="s-reset" type="button">Reset</button>
+    <button class="try" id="s-srt" type="button">Unduh .srt</button>
+  </section>
+  <section class="voice recset" aria-label="Unduh video">
+    <button class="try rec" id="rec" type="button">Unduh video</button>
+    <span id="recnote">Chrome/Edge di komputer. Pilih “Tab ini”, lalu centang “Bagikan audio tab”. Perekaman berjalan 2,5 menit.</span>
   </section>
   <input id="seek" type="range" min="0" max="156.4" step="0.1" value="0" aria-label="Timeline 156 detik">
   <nav class="scenes" id="scenes" aria-label="Adegan"></nav>
@@ -585,6 +614,50 @@ seek.max=DUR;{const tt=document.querySelector('.time');if(tt&&tt.lastChild)tt.la
 resize();applyVolume();setPlayUI();
 if(document.fonts&&document.fonts.ready){document.fonts.ready.then(()=>{drawFrame(t);});}
 requestAnimationFrame(now=>{last=now;loop(now);});
+
+/* ===== Pengaturan subtitle ===== */
+const SD={on:1,size:100,pos:'b',off:0,w:75,fc:'#f1e8d2',bc:'#000000',bo:0,font:'ui',bold:0,shadow:1};
+let ss=Object.assign({},SD);try{Object.assign(ss,JSON.parse(store.get('hj-sub')||'{}'));}catch(e){}
+const subBox=document.querySelector('.sub'),FNT={ui:'var(--f-ui)',display:'var(--f-display)',serif:"Georgia,'Times New Roman',serif"};
+const SB=[['s-on','on','c'],['s-size','size','n'],['s-pos','pos','s'],['s-off','off','n'],['s-w','w','n'],['s-fc','fc','s'],['s-bc','bc','s'],['s-bo','bo','n'],['s-font','font','s'],['s-bold','bold','c'],['s-shadow','shadow','c']];
+function applySub(save){const v=parseInt(ss.bc.slice(1),16),st=subBox.style;
+  st.setProperty('--ss',ss.size/100);st.setProperty('--sw',ss.w);st.setProperty('--so',ss.off+'%');st.setProperty('--sc',ss.fc);st.setProperty('--sf',FNT[ss.font]||FNT.ui);
+  st.setProperty('--sbw',ss.bold?700:400);st.setProperty('--sh',ss.shadow?'0 1px 6px rgba(0,0,0,.95),0 0 2px rgba(0,0,0,.9)':'none');
+  st.setProperty('--sbg',ss.bo>0?'rgba('+(v>>16&255)+','+(v>>8&255)+','+(v&255)+','+(ss.bo/100)+')':'transparent');
+  subBox.dataset.p=ss.pos==='b'?'':ss.pos;subBox.classList.toggle('hid',!ss.on);if(save)store.set('hj-sub',JSON.stringify(ss));}
+function syncSub(){SB.forEach(([id,k,ty])=>{const e=$(id);if(ty==='c')e.checked=!!ss[k];else e.value=ss[k];});}
+SB.forEach(([id,k,ty])=>$(id).addEventListener('input',()=>{const e=$(id);ss[k]=ty==='c'?+e.checked:ty==='n'?+e.value:e.value;applySub(1);}));
+$('s-reset').addEventListener('click',()=>{ss=Object.assign({},SD);syncSub();applySub(1);});
+syncSub();applySub(0);
+
+/* ===== Unduh .srt (waktu sesuai video, sudah termasuk perpanjangan adegan) ===== */
+function tc(s){const ms=Math.round(s*1000),p=(n,l)=>String(n).padStart(l,'0');return p(Math.floor(ms/3600000),2)+':'+p(Math.floor(ms/60000)%60,2)+':'+p(Math.floor(ms/1000)%60,2)+','+p(ms%1000,3);}
+function saveBlob(b,name){const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);}
+$('s-srt').addEventListener('click',()=>{let n=0;const out=SEG.filter(s=>s[2]).slice().sort((x,y)=>x[0]-y[0]).map(s=>(++n)+'\n'+tc(unw(s[0]))+' --> '+tc(unw(s[1]))+'\n'+s[2]+'\n').join('\n');
+  saveBlob(new Blob(['\ufeff'+out],{type:'text/plain;charset=utf-8'}),'hijrah-subtitle.srt');});
+
+/* ===== Unduh video (rekam tab ini: gambar + suara persis seperti yang diputar) ===== */
+let recBusy=false;
+$('rec').addEventListener('click',async()=>{
+  const note=$('recnote'),btn=$('rec');if(recBusy)return;
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getDisplayMedia||!window.MediaRecorder){note.textContent='Browser ini belum mendukung. Pakai Chrome atau Edge di komputer.';return;}
+  let st;try{st=await navigator.mediaDevices.getDisplayMedia({video:{frameRate:30,cursor:'never'},audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false},preferCurrentTab:true,selfBrowserSurface:'include',systemAudio:'exclude'});}catch(e){note.textContent='Perekaman dibatalkan.';return;}
+  const vt=st.getVideoTracks()[0],kill=()=>st.getTracks().forEach(x=>x.stop());
+  if(!st.getAudioTracks().length){kill();note.textContent='Suara tab tidak ikut dibagikan. Ulangi dan centang “Bagikan audio tab”.';return;}
+  try{if(window.CropTarget&&vt.cropTo)await vt.cropTo(await CropTarget.fromElement(document.querySelector('.frame')));}catch(e){}
+  const mt=['video/mp4;codecs=avc1.640028,mp4a.40.2','video/webm;codecs=vp9,opus','video/webm;codecs=vp8,opus','video/webm'].find(m=>MediaRecorder.isTypeSupported(m));
+  if(!mt){kill();note.textContent='Format rekam tidak didukung browser ini.';return;}
+  recBusy=true;btn.disabled=true;if(playing)pause();document.querySelector('.frame').scrollIntoView({block:'center'});
+  const ov=vol,om=muted;muted=false;vol=1;applyVolume();
+  const rc=new MediaRecorder(st,{mimeType:mt,videoBitsPerSecond:6e6,audioBitsPerSecond:192e3}),ch=[];let tm=0,iv=0,fin=false;
+  rc.ondataavailable=e=>{if(e.data.size)ch.push(e.data);};
+  rc.onstop=()=>{clearInterval(iv);clearTimeout(tm);kill();vol=ov;muted=om;applyVolume();recBusy=false;btn.disabled=false;
+    if(!fin){note.textContent='Perekaman dihentikan sebelum selesai.';return;}
+    const ext=mt.startsWith('video/mp4')?'mp4':'webm';saveBlob(new Blob(ch,{type:mt.split(';')[0]}),'hijrah-nabi-muhammad.'+ext);note.textContent='Selesai. File .'+ext+' sudah diunduh.';};
+  vt.addEventListener('ended',()=>{if(rc.state!=='inactive')rc.stop();});
+  seekTo(0);rc.start(1000);note.textContent='Merekam… jangan pindah tab atau tutup jendela.';
+  setTimeout(()=>{ended=false;play();iv=setInterval(()=>{note.textContent='Merekam… '+fmt(T)+' / '+fmt(DUR)+' (jangan pindah tab)';if(ended&&!fin){fin=true;clearInterval(iv);tm=setTimeout(()=>{if(rc.state!=='inactive')rc.stop();},1500);}},250);},900);
+});
 
 })();
 </script>
